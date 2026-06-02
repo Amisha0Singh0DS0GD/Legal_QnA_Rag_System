@@ -14,10 +14,10 @@ Educational RAG pipeline for legal-style clauses: **BM25 + dense embeddings + Re
 | **`project2/ingestion/`** | `parser.py`, `chunker.py` (CLI builds `corpus.jsonl`) |
 | **`project2/embeddings/`** | `generic_eval.py`, `legal_eval.py` |
 | **`project2/retrieval/`** | `schemas.py`, `bm25_index.py`, `faiss_index.py`, `hybrid_search.py` |
-| **`project2/evaluation/`** | `benchmark.py`, `rrf_tuning.py`, `weight_tuning.py` |
+| **`project2/evaluation/`** | `benchmark.py`, `rrf_tuning.py`, `weight_tuning.py`, `q8_hybrid_snapshot.py` (Q8 queries → hybrid top-1 table) |
 | **`project2/reranker/`** | `cross_encoder.py` |
-| **`project2/embedding_eval.md`** | Embedding comparison notes |
-| **`project2/tuning_results.md`** | RRF / weight tuning notes |
+| **`project2/embedding_eval.md`** | Embedding comparison + **measured** cosine / Q8 hybrid snapshot (see file header for refresh commands) |
+| **`project2/tuning_results.md`** | RRF / weight tuning — **tables tied to exact queries** from `rrf_tuning` / `weight_tuning` |
 | **`project2/demo_hybrid.py`** | Terminal chat demo over hybrid retrieval (`python -m project2.demo_hybrid`) |
 | **`planner/requirements.md`** | Assignment / specification notes for this repo |
 | **`requirements.txt`** | Python dependencies |
@@ -52,6 +52,7 @@ PYTHONPATH=. python -m project2.retrieval.hybrid_search
 PYTHONPATH=. python -m project2.embeddings.generic_eval
 PYTHONPATH=. python -m project2.evaluation.rrf_tuning
 PYTHONPATH=. python -m project2.evaluation.weight_tuning
+PYTHONPATH=. python project2/evaluation/q8_hybrid_snapshot.py   # Q8 queries → hybrid top-1 (for embedding_eval.md)
 ```
 
 ---
