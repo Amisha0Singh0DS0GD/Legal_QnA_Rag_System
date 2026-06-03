@@ -57,7 +57,7 @@ PYTHONPATH=. python project2/evaluation/q8_hybrid_snapshot.py   # Q8 queries →
 
 ---
 
-## Hybrid demo (screen share)
+## Hybrid demo 
 
 Use **three surfaces** together: IDE for workflow, **markdown** for evaluation write-ups, **terminal chat** for live retrieval.
 
